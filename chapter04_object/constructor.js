@@ -4,7 +4,7 @@ function Hero(name) {
 
 var h2 = new Hero("aa");
 console.log(h2.name);
-console.log(h2.constructor);
+console.log(h2.constructor);    // new出来的对象，其constructor属性就是构造函数
 
 var h3 = new h2.constructor("bb")
 console.log(h3.name)
@@ -15,6 +15,8 @@ var o = {}
 console.log(o.constructor);
 
 console.log("--------------------------------------------")
+// instanceof检验对象是否是某个构造函数构造出来的，
+// 或者原型链上的对象是否是某个构造函数构造出来的
 console.log(h2 instanceof Hero);
 console.log(h3 instanceof Object);
 console.log(o instanceof Object);

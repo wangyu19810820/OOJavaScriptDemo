@@ -3,7 +3,7 @@
 var a = new Function('a', 'b', 'c, d', 'return a + b + c + d;');
 var result = a(1, 2, 3, 4)
 console.log(result)
-console.log("--------------------------------------------")
+console.log("------------------------- -------------------")
 
 // 函数的constructor属性是Function,length属性是形参数量
 function b(x, y, z) {
