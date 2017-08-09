@@ -1,9 +1,11 @@
+// colorString是字符串，类似：#0000FF
 function parseColor(colorString) {
     var numArr = [];
+    // 舍弃第一位'#',每两位
     for (var i = 1; i < colorString.length; i++) {
         if (i % 2 == 0) {
-            var num = parseInt(colorString[i - 1], 16) * 16;
-            numArr.push(num + parseInt(colorString[i], 16));
+            var highBitValue = parseInt(colorString[i - 1], 16) * 16;
+            numArr.push(highBitValue + parseInt(colorString[i], 16));
         }
     }
     return "rgb(" + numArr[0] + "," + numArr[1] + "," + numArr[2] + ")";

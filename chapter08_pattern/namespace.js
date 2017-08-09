@@ -55,9 +55,6 @@ MYAPP.myevent.addEvent = function (el, type, fn) {
 
 // 如果参数过多，且参数独立，可放到对象中，以简化代码
 MYAPP.dom.fancyButton = function (text, conf) {
-    console.log("OKKKKKKKKKKKK")
-    console.log(JSON.stringify(conf.width))
-    console.log(text)
     var btn = document.createElement('input')
     btn.value = text;
     btn.type = conf.type || 'submit';
@@ -65,3 +62,46 @@ MYAPP.dom.fancyButton = function (text, conf) {
     btn.height = conf.height || '100';
     return btn;
 }
+
+// 私有属性和方法
+MYAPP.dom.fancyButton1 = function (text, conf) {
+    var styles = {
+        border:'1px solid red',
+        width:'100px',
+        color:'black',
+        'background-color':'grey'
+    }
+    function setStyle(input) {
+        for (var p in styles) {
+            if (styles.hasOwnProperty(p)) {
+                input.style[p] = conf[p] || styles[p];
+            }
+        }
+    }
+    var btn = document.createElement('input')
+    btn.value = text;
+    btn.type = conf.type || 'submit';
+    setStyle(btn);
+    return btn;
+}
+
+// 私有函数的公有化
+MYAPP.dom1 = (function () {
+    function _setStyle() {
+        console.log("_setStyle")
+    }
+    function _getStyle() {
+        console.log("_getStyle")
+    }
+    return {
+        setStyle:_setStyle,
+        getStyle:_getStyle,
+        anotherFun:_setStyle
+    }
+}());
+MYAPP.dom1.setStyle();
+MYAPP.dom1.setStyle = function () {
+    console.log("MYAPP.dom1.setStyle")
+}
+MYAPP.dom1.setStyle();
+MYAPP.dom1.anotherFun();
